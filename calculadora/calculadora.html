@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<HTML LANG="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scalew=1.0">
+        <title>calculadora</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .fundo{
+background-image: linear-gradient(50deg,black,rgb(255, 17, 0));
+height: 100vh;
+color:rgb(254, 255, 255);
+font-family:Arial, Helvetica, sans-serif ;
+text-align:center;
+            }
+            .calculadora{
+                position: absolute;
+                background-color:rgba(0,0,0,0.8);
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                border-radius: 15px;
+                padding: 15px;
+
+            }
+                
+            .botão{
+                width: 50px; 
+                height: 50px;
+                font-size: 25px;
+                cursor: pointer;
+                background-color: rgb(31,31,31,31);
+                border: none;
+                color: rgb(242, 255, 255);
+            }
+            .botão:hover{
+                background-color: black;
+            }
+
+            #resultado{
+                background-color: white;
+                width: 207;
+                height: 30px;
+                margin: 5px;
+                color: black;
+                text-align: right;
+            }
+
+            
+
+        </style>
+    </head>
+    <body>
+        <div class="fundo">
+            <h1>ademir junior</h1>
+            <div class="calculadora">
+                <h1>calculadora</h1>
+                <input id="resultado" value="" />
+                    <table>
+                        <tr>
+                            <td><button class="botão" >CE</button></td>
+                            <td><button class="botão">c</button></td>
+                            <td><button class="botão" onclick="removenumber()">del</button></td>
+                        </tr>
+                        <tr>
+                            <td><button class="botão">%</button></td>
+                            <td><button class="botão">,</button></td>
+                            <td><button class="botão">/</button></td>
+                            <td><button class="botão">-</button></td>
+                        </tr>
+                        <tr>
+                            <td><button onclick="addnumber(7)" class="botão">7</button></td>
+                            <td><button onclick="addnumber(8)" class="botão">8</button></td>
+                            <td><button onclick="addnumber(9)" class="botão">9</button></td>
+                            <td><button class="botão">x</button></td>
+                        </tr>
+                        <tr>
+                            <td><button onclick="addnumber(4)" class="botão">4</button></td>
+                            <td><button onclick="addnumber(5)" class="botão">5</button></td>
+                            <td><button onclick="addnumber(6)" class="botão">6</button></td>
+                            <td><button onclick="soma()" class="botão">+</button></td>
+                        </tr>
+                        <tr>
+                            <td><button onclick="addnumber(1)" class="botão">1</button></td>
+                            <td><button onclick="addnumber(2)" class="botão">2</button></td>
+                            <td><button onclick="addnumber(3)" class="botão">3</button></td>
+                            <td><button onclick="igual()" class="botão">=</button></td>
+                        </tr>
+                    </table>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var resultado = parseFloat(0);
+            var ultimaoperacao = '';
+            
+            function addnumber(numero){
+                document.getElementById('resultado').value = document.getElementById('resultado').value + numero;                
+            }
+
+            function removenumber(){
+                var str = document.getElementById('resultado').value;
+                document.getElementById('resultado').value = str.substr(0,str.length-1);
+            }
+
+            function soma(){
+                if(ultimaoperacao != '='){
+                   resultado = resultado + parseFloat(document.getElementById('resultado').value);
+                }
+                document.getElementById('resultado').value = '';
+                ultimaoperacao = '+';
+            }
+
+            function igual(){
+
+                if(ultimaoperacao == '+'){
+                    soma();
+                }
+
+                document.getElementById('resultado').value = resultado;
+                ultimaoperacao = '=';
+            }
+
+        </script>
+
+    </body>
+</HTML>
